@@ -11,20 +11,3 @@ export interface HeadersContent {
   head: string;
   contentKey: string;
 }
-
-export interface DataTableType {
-  columns: object[];
-  rowActions: object[];
-  rowsPerPage: number;
-  entriesPerPage: number;
-}
-
-export interface PageChangeEventType {
-  fromEntry: any;
-  toEntry: any;
-}
-
-export interface RowActionWithData {
-  actionToPerform: any;
-  rowData: any;
-}
