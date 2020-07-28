@@ -1,0 +1,53 @@
+$border: #cccccc
+$header-color: #666666
+$header-background: #f8f8f8
+$body-background: #ffffff
+$body-color: #343434
+
+pre
+  display: none !important
+
+.table-container
+  margin: 0 1.5rem
+
+  h3
+    text-transform: uppercase
+    font-size: 1.6rem
+
+  h5
+    text-transform: uppercase
+    font-size: 1.4rem
+
+  .table
+    width: 100%
+    display: flex
+    flex-direction: column
+    border: 1px solid $border
+    border-radius: 1rem
+    overflow: scroll
+
+    .head
+      background-color: $header-background
+      color: $header-color
+      display: flex
+      flex-direction: row
+      line-height: 1.6rem
+      font-size: 1.4rem
+
+      & > *
+        flex: 1
+        padding: 1.6rem
+
+    .body
+      background-color: $body-background
+      color: $body-color
+
+      .row
+        display: flex
+        flex-direction: row
+        line-height: 1.6rem
+        font-size: 1.4rem
+
+        & > *
+          flex: 1
+          padding: 1.6rem

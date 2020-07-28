@@ -1,0 +1,25 @@
+<div class="table-container">
+  <h3 *ngIf="sourceData.title">{{sourceData.title}}</h3>
+  <h5 *ngIf="sourceData.subtitle">{{sourceData.subtitle}}</h5>
+
+  <div class="table">
+    <div *ngIf="headers" class="head">
+      <div class="" *ngFor="let head of headers">
+        <div *ngFor="let item of head | keyvalue">{{item.key === 'head' ? item.value : null}}</div>
+      </div>
+    </div>
+    <div *ngIf="content" class="body">
+      <div class="row" *ngFor="let item of content">
+        <div class="col" *ngFor="let head of headers">
+          <div [innerHTML]="renderContent(item, head.contentKey)"></div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<pre>
+  {{ sourceData | json }}
+</pre>
