@@ -9,25 +9,37 @@ import { CurrencyPipe } from '@angular/common';
 export class AppComponent implements OnInit {
 
   content = [
-    { tipo: 'PAGARÉ', plazo: '15 días', fecha: new Date(), inicial: this.convertToCurrency(123456789) },
-    { tipo: 'OTRO', plazo: '150 días', fecha: new Date(), inicial: this.convertToCurrency(987654321) },
-    { tipo: 'PAGARÉ 1', plazo: '1 días', fecha: new Date(), inicial: this.convertToCurrency(678901234) },
+    { id: 1, tipo: 'PAGARÉ', plazo: '15 días', fecha: new Date(), inicial: this.convertToCurrency(123456789) },
+    { id: 2, tipo: 'OTRO', plazo: '150 días', fecha: new Date(), inicial: this.convertToCurrency(987654321) },
+    { id: 3, tipo: 'PAGARÉ 1', plazo: '1 días', fecha: new Date(), inicial: this.convertToCurrency(678901234) },
     {
-      tipo: 'OTRO 2', plazo: '30 días', fecha: new Date(), inicial: this.convertToCurrency(102346789), icon: {
+      id: 4, tipo: 'OTRO 2', plazo: '30 días', fecha: new Date(), inicial: this.convertToCurrency(102346789), icon: {
         name: 'long-arrow-right',
         size: '2x',
         text: 'test'
       }
     },
     {
-      tipo: 'OTRO 2', plazo: '30 días', fecha: new Date(), inicial: this.convertToCurrency(102346789), icon: {
+      id: 5, tipo: 'OTRO 2', plazo: '30 días', fecha: new Date(), inicial: this.convertToCurrency(102346789), icon: {
         name: 'long-arrow-left',
         size: '3x',
       }
     },
     {
-      tipo: 'Funcion', fecha: new Date(), inicial: this.convertToCurrency(102346789), icon: {
-        name: 'long-arrow-right',
+      id: 6, tipo: 'Funcion', inicial: this.convertToCurrency(102346789), function: {
+        fName: 'testFunction',
+        parameters: [6, 7, 'asas'],
+        text: 'Abrir'
+      }
+    },
+    {
+      id: 7, tipo: 'Funcion', inicial: this.convertToCurrency(102346789), function: {
+        fName: 'testFunction3',
+        parameters: [{
+          nombre: 'Juan',
+          appellido: 'Perez'
+        }],
+        text: 'Abrir'
       }
     }
   ];
@@ -37,7 +49,8 @@ export class AppComponent implements OnInit {
     { head: 'Tipo de inversión', contentKey: 'tipo' },
     { head: 'Plazo', contentKey: 'plazo' },
     { head: 'Fecha de inversión', contentKey: 'fecha' },
-    { head: 'Saldo inicial', contentKey: 'inicial' }
+    { head: 'Saldo inicial', contentKey: 'inicial' },
+    { head: 'Funcion', contentKey: 'function' }
   ];
 
   data: object = {
@@ -50,11 +63,29 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  constructor(private _cp: CurrencyPipe) { }
+  constructor(private currenciPipe: CurrencyPipe) { }
 
   convertToCurrency(quantity: number): string {
-    const currency = this._cp.transform( quantity, 'USD', '1.0-0');
+    const currency = this.currenciPipe.transform(quantity, 'MXN');
     return currency;
+  }
+
+  testFunction(params: []) {
+    console.warn('llamada funcion con params ');
+    console.table(params);
+  }
+
+  testFunction3(params: []) {
+    console.warn('llamada funcion con params ');
+    console.table(params);
+  }
+
+  emmitedFunction(data: object) {
+    const functionCalled = data['fName'];
+    const params = data['parameters'];
+    if (this[functionCalled]) {
+      this[functionCalled](params);
+    }
   }
 
 }

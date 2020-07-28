@@ -11,8 +11,14 @@
     <div *ngIf="content" class="body">
       <div class="row" *ngFor="let item of content">
         <div class="col" *ngFor="let head of headers">
-          <div [innerHTML]="renderContent(item, head.contentKey)"></div>
-
+          <div *ngIf="head.contentKey !== 'function'" [innerHTML]="renderContent(item, head.contentKey)"></div>
+          <button
+            class="btn btn-primary w-75 mx-3"
+            *ngIf="head.contentKey === 'function' && item[head.contentKey]"
+            (click)="emmitFunctionCallback(item[head.contentKey])"
+          >
+            {{item[head.contentKey]['text']}}
+          </button>
         </div>
       </div>
     </div>
