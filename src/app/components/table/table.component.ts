@@ -31,12 +31,11 @@ export class TableComponent implements OnInit {
     }
   }
 
-  returnIcon(iconName: string) {
-    console.log(iconName);
-    if (!iconName) { return; }
-    const iconText = iconName['text'] ? iconName['text'] : '';
-    const iconSize = iconName['size'] ? `fa-${iconName['size']}` : ''
-    const iconString = `<i class="fa fa-${iconName['name']} ${iconSize}" >&nbsp;&nbsp;${iconText}</i>`;
+  returnIcon(iconObject: object): SafeHtml {
+    if (!iconObject) { return; }
+    const iconText = iconObject['text'] ? iconObject['text'] : '';
+    const iconSize = iconObject['size'] ? `fa-${iconObject['size']}` : ''
+    const iconString = `<i class="fa fa-${iconObject['name']} ${iconSize}" >&nbsp;&nbsp;${iconText}</i>`;
     const icon: SafeHtml = this.sanitazer.sanitize(SecurityContext.HTML, iconString);
     return icon;
   }

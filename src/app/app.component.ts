@@ -27,8 +27,7 @@ export class AppComponent implements OnInit {
     },
     {
       tipo: 'Funcion', fecha: new Date(), inicial: this.convertToCurrency(102346789), icon: {
-        name: 'long-arrow-left',
-        size: '3x',
+        name: 'long-arrow-right',
       }
     }
   ];
@@ -54,7 +53,7 @@ export class AppComponent implements OnInit {
   constructor(private _cp: CurrencyPipe) { }
 
   convertToCurrency(quantity: number): string {
-    const currency = this._cp.transform( quantity, 'USD', true, '1.0-0');
+    const currency = this._cp.transform( quantity, 'USD', '1.0-0');
     return currency;
   }
 
