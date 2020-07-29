@@ -70,12 +70,12 @@ export class AppComponent implements OnInit {
     return currency;
   }
 
-  testFunction(params: []) {
+  testFunction(params: any[]) {
     console.warn('llamada funcion con params ');
     console.table(params);
   }
 
-  testFunction3(params: []) {
+  testFunction3(params: any[]) {
     console.warn('llamada funcion con params ');
     console.table(params);
   }

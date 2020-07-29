@@ -1,7 +1,6 @@
 import { TableSource, HeadersContent } from './../../models/table-source.model';
 import { Component, OnInit, Input, SecurityContext, Output, EventEmitter } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { Button } from 'protractor';
 
 @Component({
   selector: 'app-table',
@@ -32,7 +31,7 @@ export class TableComponent implements OnInit {
       return item[type];
     } else if (type === 'icon') {
       return this.returnIcon(item[type]);
-    } else { return null; }
+    }
   }
 
   returnIcon(iconObject: object): SafeHtml {
@@ -42,10 +41,6 @@ export class TableComponent implements OnInit {
     const iconString = `<i class="fa fa-${iconObject['name']} ${iconSize}" >&nbsp;&nbsp;${iconText}</i>`;
     const icon: SafeHtml = this.sanitazer.sanitize(SecurityContext.HTML, iconString);
     return icon;
-  }
-
-  iconClick() {
-    alert('icon click');
   }
 
   emmitFunctionCallback(data: object) {
