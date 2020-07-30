@@ -1,11 +1,17 @@
 import { SafeHtml } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TableComponent } from './table.component';
-import { HeadersContent, TableSource } from './../../models/table-source.model';
+import { PaginationComponent } from '../pagination/pagination.component';
+import { HeadersContent, TableSource, PaginationContent } from './../../models/table-source.model';
 
 describe('TableComponent', () => {
   let component: TableComponent;
   let fixture: ComponentFixture<TableComponent>;
+
+  const pagination: PaginationContent = {
+    itemsPerPage: 3,
+    totalItems: 100
+  };
   const content = [
     { id: 1, tipo: 'PAGARÉ', plazo: '15 días', fecha: new Date(), inicial: 123456789 },
     { id: 2, tipo: 'OTRO', plazo: '150 días', fecha: new Date(), inicial: 987654321 },
@@ -66,7 +72,10 @@ describe('TableComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TableComponent]
+      declarations: [
+        TableComponent,
+        PaginationComponent
+      ]
     })
       .compileComponents();
   }));

@@ -2,6 +2,7 @@ import { CurrencyPipe } from '@angular/common';
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { TableComponent } from './components/table/table.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 describe('AppComponent', () => {
 
@@ -20,7 +21,8 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        TableComponent
+        TableComponent,
+        PaginationComponent
       ],
       providers: [
         CurrencyPipe
