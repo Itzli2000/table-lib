@@ -5,25 +5,33 @@
   <div class="table">
     <div *ngIf="headers" class="head">
       <div class="" *ngFor="let head of headers">
-        <div *ngFor="let item of head | keyvalue">{{item.key === 'head' ? item.value : null}}</div>
+        <div *ngFor="let item  of head | keyvalue">
+          <div *ngIf="isSortable(head, 'sort')" (click)="sortData(head.contentKey)">
+            <p *ngIf="item.key === 'head'">
+              {{item.value}}
+              <i class="fa fa-long-arrow-down" aria-hidden="true"></i>
+            </p>
+          </div>
+          <div *ngIf="!isSortable(head, 'sort')">
+            <p *ngIf="item.key === 'head'">{{item.value}}</p>
+          </div>
+        </div>
       </div>
     </div>
     <div *ngIf="content" class="body">
       <div class="row" *ngFor="let item of pagedContent">
         <div class="col" *ngFor="let head of headers">
           <div *ngIf="head.contentKey !== 'function'" [innerHTML]="renderContent(item, head.contentKey)"></div>
-          <button
-            class="btn btn-primary w-75 mx-3"
-            *ngIf="head.contentKey === 'function' && item[head.contentKey]"
-            (click)="emmitFunctionCallback(item[head.contentKey])"
-          >
+          <button class="btn btn-primary w-75 mx-3" *ngIf="head.contentKey === 'function' && item[head.contentKey]"
+            (click)="emmitFunctionCallback(item[head.contentKey])">
             {{item[head.contentKey]['text']}}
           </button>
         </div>
       </div>
     </div>
   </div>
-  <app-pagination *ngIf="content.length > pagination.itemsPerPage" (pageSelected)="pageSelected($event)" [itemsPerPage]=pagination></app-pagination>
+  <app-pagination *ngIf="content.length > pagination.itemsPerPage" (pageSelected)="pageSelected($event)"
+    [itemsPerPage]=pagination></app-pagination>
 
 </div>
 

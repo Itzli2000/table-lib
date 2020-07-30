@@ -47,11 +47,11 @@ export class AppComponent implements OnInit {
 
   headers = [
     { head: '', contentKey: 'icon' },
-    { head: 'Tipo de inversión', contentKey: 'tipo' },
-    { head: 'Plazo', contentKey: 'plazo' },
-    { head: 'Fecha de inversión', contentKey: 'fecha' },
-    { head: 'Saldo inicial', contentKey: 'inicial' },
-    { head: 'Funcion', contentKey: 'function' }
+    { head: 'Tipo de inversión', contentKey: 'tipo', sort: true },
+    { head: 'Plazo', contentKey: 'plazo', sort: true },
+    { head: 'Fecha de inversión', contentKey: 'fecha', sort: true },
+    { head: 'Saldo inicial', contentKey: 'inicial', sort: true },
+    { head: 'Funcion', contentKey: 'function'  }
   ];
 
   data: TableSource = {

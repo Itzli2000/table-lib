@@ -15,6 +15,7 @@ export class TableComponent implements OnInit {
   content: object[];
   pagedContent: object[];
   currentPage: number;
+  sortOrder: number;
   pagination: PaginationContent = {
     itemsPerPage: null,
     totalItems: null
@@ -30,7 +31,16 @@ export class TableComponent implements OnInit {
     this.pagination.itemsPerPage = this.sourceData.itemsPerPage || 10;
     this.pagination.totalItems = this.content.length;
     this.currentPage = 1;
+    this.sortOrder = 1;
     this.setPaginatedContent();
+  }
+
+  renderContent(item: any, type: any) {
+    if (type !== 'icon' && type !== 'function') {
+      return item[type];
+    } else if (type === 'icon') {
+      return this.returnIcon(item[type]);
+    }
   }
 
   setPaginatedContent() {
@@ -39,15 +49,9 @@ export class TableComponent implements OnInit {
     this.pagedContent = this.content.slice(start, end);
   }
 
-  renderContent(item: any, type: any) {
-    // console.log(item);
-    // console.log(type);
-
-    if (type !== 'icon' && type !== 'function') {
-      return item[type];
-    } else if (type === 'icon') {
-      return this.returnIcon(item[type]);
-    }
+  pageSelected(data: number) {
+    this.currentPage = data;
+    this.setPaginatedContent();
   }
 
   returnIcon(iconObject: object): SafeHtml {
@@ -67,8 +71,24 @@ export class TableComponent implements OnInit {
     this.functionEmmiter.emit(response);
   }
 
-  pageSelected(data: number) {
-    this.currentPage = data;
+  isSortable(item: object, type: string) {
+    const resp = item.hasOwnProperty(type);
+    return resp;
+  }
+
+  sortData(type: string) {
+    const data = [...this.content];
+    data.sort((a, b) => {
+      let comparison = 0;
+      if (a[type] > b[type]) {
+        comparison = 1;
+      } else if (a[type] < b[type]) {
+        comparison = -1;
+      }
+      return comparison * this.sortOrder;
+    });
+    this.sortOrder = this.sortOrder > 0 ? -1 : 1;
+    this.content = [...data];
     this.setPaginatedContent();
   }
 
