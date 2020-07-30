@@ -5,9 +5,15 @@ export interface TableSource {
   pagination?: number;
   headers: HeadersContent[];
   content: object[];
+  itemsPerPage?: number;
 }
 
 export interface HeadersContent {
   head: string;
   contentKey: string;
+}
+
+export interface PaginationContent {
+  itemsPerPage: number;
+  totalItems: number;
 }

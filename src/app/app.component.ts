@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
+import { TableSource } from './models/table-source.model';
 
 @Component({
   selector: 'app-root',
@@ -53,11 +54,12 @@ export class AppComponent implements OnInit {
     { head: 'Funcion', contentKey: 'function' }
   ];
 
-  data: object = {
+  data: TableSource = {
     title: 'Title',
     subtitle: 'here',
     headers: this.headers,
-    content: this.content
+    content: this.content,
+    // itemsPerPage: 3,
   };
 
   ngOnInit(): void {

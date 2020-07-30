@@ -9,7 +9,7 @@
       </div>
     </div>
     <div *ngIf="content" class="body">
-      <div class="row" *ngFor="let item of content">
+      <div class="row" *ngFor="let item of pagedContent">
         <div class="col" *ngFor="let head of headers">
           <div *ngIf="head.contentKey !== 'function'" [innerHTML]="renderContent(item, head.contentKey)"></div>
           <button
@@ -23,6 +23,7 @@
       </div>
     </div>
   </div>
+  <app-pagination *ngIf="content.length > 1" (pageSelected)="pageSelected($event)" [itemsPerPage]=pagination></app-pagination>
 
 </div>
 
