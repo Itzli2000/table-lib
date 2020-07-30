@@ -116,4 +116,15 @@ describe('TableComponent', () => {
     expect(component.setPaginatedContent).toHaveBeenCalled();
   });
 
+  it('should sort the data when recive sort type', () => {
+    component.sortData('tipo');
+    expect(component.sortOrder).toBe(-1);
+  });
+
+  it('should set sort order to negative', () => {
+    component.sortOrder = -1;
+    component.sortData('tipo');
+    expect(component.sortOrder).toBe(1);
+  });
+
 });
