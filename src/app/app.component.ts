@@ -59,7 +59,7 @@ export class AppComponent implements OnInit {
     subtitle: 'here',
     headers: this.headers,
     content: this.content,
-    // itemsPerPage: 3,
+    itemsPerPage: 3,
   };
 
   ngOnInit(): void {

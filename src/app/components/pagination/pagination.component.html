@@ -2,17 +2,12 @@
   <ul>
     <li *ngIf="this.currentPage > 1" (click)="onPageSelection(1)">&lt;&lt;</li>
     <li *ngIf="this.currentPage > 1" (click)="onAdjacentPageSelection(-1)">&lt;</li>
-    <li *ngFor="let pageNum of listOfAvailablePages"
-        (click)="onPageSelection(pageNum)"
-        style="padding:10px;cursor:pointer">
-      <span *ngIf="pageNum !== currentPage; else current_page">{{ pageNum }}</span>
-      <ng-template #current_page>
-        <span style="background: #ccc">{{ pageNum }}</span>
-      </ng-template>
+    <li *ngFor="let pageNum of listOfAvailablePages" (click)="onPageSelection(pageNum)"
+      [ngClass]="{'active' : pageNum === currentPage}">
+      <span>{{ pageNum }}</span>
     </li>
-    <li *ngIf="currentPage < listOfAvailablePages.length"
-        (click)="onAdjacentPageSelection(1)">&gt;</li>
-    <li *ngIf="currentPage < listOfAvailablePages.length"
-        (click)="onPageSelection(listOfAvailablePages.length)">&gt;&gt;</li>
+    <li *ngIf="currentPage < listOfAvailablePages.length" (click)="onAdjacentPageSelection(1)">&gt;</li>
+    <li *ngIf="currentPage < listOfAvailablePages.length" (click)="onPageSelection(listOfAvailablePages.length)">
+      &gt;&gt;</li>
   </ul>
 </div>

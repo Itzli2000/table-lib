@@ -23,7 +23,7 @@
       </div>
     </div>
   </div>
-  <app-pagination *ngIf="content.length > 1" (pageSelected)="pageSelected($event)" [itemsPerPage]=pagination></app-pagination>
+  <app-pagination *ngIf="content.length > pagination.itemsPerPage" (pageSelected)="pageSelected($event)" [itemsPerPage]=pagination></app-pagination>
 
 </div>
 

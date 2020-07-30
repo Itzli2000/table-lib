@@ -3,9 +3,9 @@ export interface TableSource {
   subtitle?: string;
   actions?: object;
   pagination?: number;
+  itemsPerPage?: number;
   headers: HeadersContent[];
   content: object[];
-  itemsPerPage?: number;
 }
 
 export interface HeadersContent {

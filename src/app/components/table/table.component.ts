@@ -37,7 +37,6 @@ export class TableComponent implements OnInit {
     const start = this.currentPage === 1 ? 0 : this.pagination.itemsPerPage * (this.currentPage - 1);
     const end = this.pagination.itemsPerPage * this.currentPage;
     this.pagedContent = this.content.slice(start, end);
-    console.log(this.pagedContent);
   }
 
   renderContent(item: any, type: any) {
@@ -69,7 +68,6 @@ export class TableComponent implements OnInit {
   }
 
   pageSelected(data: number) {
-    console.log('pagina seleccionada ' + data);
     this.currentPage = data;
     this.setPaginatedContent();
   }
