@@ -7,7 +7,7 @@
       <div class="" *ngFor="let head of headers">
         <div *ngFor="let item  of head | keyvalue">
           <div *ngIf="isSortable(head, 'sort')" (click)="sortData(head.contentKey)">
-            <p *ngIf="item.key === 'head'">
+            <p *ngIf="item.key === 'head'" class="pointer">
               {{item.value}}
               <i class="fa fa-long-arrow-down" aria-hidden="true"></i>
             </p>

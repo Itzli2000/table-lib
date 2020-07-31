@@ -28,7 +28,7 @@ export class TableComponent implements OnInit {
   ngOnInit() {
     this.headers = this.sourceData.headers;
     this.content = this.sourceData.content;
-    this.pagination.itemsPerPage = this.sourceData.itemsPerPage || 10;
+    this.pagination.itemsPerPage = this.sourceData.itemsPerPage || this.content.length;
     this.pagination.totalItems = this.content.length;
     this.currentPage = 1;
     this.sortOrder = 1;

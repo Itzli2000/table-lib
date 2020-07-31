@@ -52,8 +52,8 @@ describe('TableComponent', () => {
   const data: TableSource = {
     title: 'Title',
     subtitle: 'here',
-    headers: headers,
-    content: content
+    headers,
+    content
   };
   const fakeNonExisteContent = { id: 3, NonExist: 'PAGARÉ 1', plazo: '1 días', fecha: new Date(), inicial: 678901234 };
   const fakeFunctionCall = {

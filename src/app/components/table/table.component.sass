@@ -25,6 +25,8 @@ pre
     border: 1px solid $border
     border-radius: 1rem
     overflow: scroll
+    position: relative
+    max-height: 300px
 
     .head
       background-color: $header-background
@@ -33,6 +35,16 @@ pre
       flex-direction: row
       line-height: 1.6rem
       font-size: 1.4rem
+      position: sticky
+      top: 0
+      left: 0
+      z-index: 10
+      -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.1)
+      -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.1)
+      box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.1)
+
+      .pointer
+        cursor: pointer
 
       & > *
         flex: 1
@@ -47,6 +59,9 @@ pre
         flex-direction: row
         line-height: 1.6rem
         font-size: 1.4rem
+
+        &:nth-child(even)
+          background-color: #f8f8f8
 
         & > *
           flex: 1
